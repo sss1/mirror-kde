@@ -4,7 +4,7 @@
 %   h - bandwidth
 %
 % Outputs:
-%   p - kernel density estimate (function handle)
+%   p - mirrored kernel density estimate (function handle)
 %   
 
 function p = mirror_kde(X, K, h)
@@ -31,12 +31,15 @@ function p = point_mirror_kde(x, X, K, h)
 
 end
 
+% a single reflection of a kernel at a single data point
 function K_S = K_S_fun(x, y, S, K, h)
 
+  % use a product kernel
   K_S = prod(arrayfun(@(xi, yi, Si) mirror_term(xi, yi, Si, K, h), x, y, S));
 
 end
 
+% 1 dimension of a single reflection of a kernel at a single data point
 function term = mirror_term(xi, yi, Si, K, h)
 
   if Si == 0 % reflect y over 0
