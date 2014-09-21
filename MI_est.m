@@ -5,7 +5,7 @@
 function I = MI_est(kernel, h, alpha, Xs, Ys)
 
     data = [Xs Ys];
-    n = size(data, 1);
+    n = size(data, 1)/2;
 
     % split data into 3 pieces (1 for each density to estimate)
     n3 = n/3;
@@ -22,7 +22,7 @@ function I = MI_est(kernel, h, alpha, Xs, Ys)
     I = 0;
 
     % Importance sampling with the log outside
-    for i = 1:n
+    for i = (n + 1):(2*n)
       I = I + (p_X(Xs(i))*p_Y(Ys(i))/(p_XY(data(i,:))))^(1 - alpha);
     end
 

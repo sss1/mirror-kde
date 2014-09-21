@@ -9,11 +9,11 @@
 
 function p = kde(X, K, h)
 
-  p = @(x) point_mirror_kde(x, X, K, h);
+  p = @(x) point_kde(x, X, K, h);
 
 end
 
-function p = point_mirror_kde(x, X, K, h)
+function p = point_kde(x, X, K, h)
 
   [n, d] = size(X);
 
