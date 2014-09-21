@@ -1,2 +1,4 @@
 # ignore results files
 *.mat
+*.png
+*.fig
